@@ -1,9 +1,9 @@
-trepmal/wp-revisions-cli
+yannicklin-ctm/wp-revisions-cli, based on trepmal/wp-revisions-cli
 ========================
 
 Manage revisions
 
-[![Build Status](https://travis-ci.org/trepmal/wp-revisions-cli.svg?branch=master)](https://travis-ci.org/trepmal/wp-revisions-cli)
+[![Build Status](https://travis-ci.org/yannicklin-ctm/wp-revisions-cli.svg?branch=master)](https://travis-ci.org/yannicklin-ctm/wp-revisions-cli)
 
 Quick links: [Using](#using) | [Installing](#installing) | [Contributing](#contributing) | [Support](#support)
 
@@ -85,14 +85,20 @@ wp revisions clean [<keep>] [--post_type=<post-type>] [--after-date=<yyyy-mm-dd>
 	[--post_type=<post-type>]
 		Clean revisions for given post type(s). Default: any
 
-	[--after-date=<yyyy-mm-dd>]
-		Clean revisions on posts published on or after this date. Default: none.
+	[--post-after-date=<yyyy-mm-dd>]
+		Clean revisions on **posts published on or after** this date. Default: none.
 
-	[--before-date=<yyyy-mm-dd>]
-		Clean revisions on posts published on or before this date. Default: none.
+	[--post-before-date=<yyyy-mm-dd>]
+		Clean revisions on **posts published on or before** this date. Default: none.
 
 	[--post_id=<post-id>]
 		Clean revisions for given post.
+
+	[--revision-after-date=<yyyy-mm-dd>]
+		Clean revisions on **revision generated on or after** this date. Default: none.
+
+	[--revision-before-date=<yyyy-mm-dd>]
+		Clean revisions on **revision generated on or before** this date. Default: none.
 
 	[--hard]
 		Hard delete. Slower, uses wp_delete_post_revision().
@@ -106,8 +112,8 @@ wp revisions clean [<keep>] [--post_type=<post-type>] [--after-date=<yyyy-mm-dd>
     wp revisions clean 5
     wp revisions clean --post_id=2
     wp revisions clean 5 --post_type=post,page
-    wp revisions clean --after-date=2015-11-01 --before-date=2015-12-30
-    wp revisions clean --after-date=2015-11-01 --before-date=2015-12-30 --dry-run
+    wp revisions clean --post-after-date=2015-11-01 --post-before-date=2015-12-30
+    wp revisions clean --revision-after-date=2015-11-01 --revision-before-date=2015-12-30 --dry-run
 
 
 
@@ -158,7 +164,7 @@ Installing this package requires WP-CLI v2.1 or greater. Update to the latest st
 
 Once you've done so, you can install this package with:
 
-    wp package install git@github.com:trepmal/wp-revisions-cli.git
+    wp package install git@github.com:yannicklin-ctm/wp-revisions-cli.git
 
 ## Contributing
 
@@ -172,13 +178,13 @@ For a more thorough introduction, [check out WP-CLI's guide to contributing](htt
 
 Think you’ve found a bug? We’d love for you to help us get it fixed.
 
-Before you create a new issue, you should [search existing issues](https://github.com/trepmal/wp-revisions-cli/issues?q=label%3Abug%20) to see if there’s an existing resolution to it, or if it’s already been fixed in a newer version.
+Before you create a new issue, you should [search existing issues](https://github.com/yannicklin-ctm/wp-revisions-cli/issues?q=label%3Abug%20) to see if there’s an existing resolution to it, or if it’s already been fixed in a newer version.
 
-Once you’ve done a bit of searching and discovered there isn’t an open or fixed issue for your bug, please [create a new issue](https://github.com/trepmal/wp-revisions-cli/issues/new). Include as much detail as you can, and clear steps to reproduce if possible. For more guidance, [review our bug report documentation](https://make.wordpress.org/cli/handbook/bug-reports/).
+Once you’ve done a bit of searching and discovered there isn’t an open or fixed issue for your bug, please [create a new issue](https://github.com/yannicklin-ctm/wp-revisions-cli/issues/new). Include as much detail as you can, and clear steps to reproduce if possible. For more guidance, [review our bug report documentation](https://make.wordpress.org/cli/handbook/bug-reports/).
 
 ### Creating a pull request
 
-Want to contribute a new feature? Please first [open a new issue](https://github.com/trepmal/wp-revisions-cli/issues/new) to discuss whether the feature is a good fit for the project.
+Want to contribute a new feature? Please first [open a new issue](https://github.com/yannicklin-ctm/wp-revisions-cli/issues/new) to discuss whether the feature is a good fit for the project.
 
 Once you've decided to commit the time to seeing your pull request through, [please follow our guidelines for creating a pull request](https://make.wordpress.org/cli/handbook/pull-requests/) to make sure it's a pleasant experience. See "[Setting up](https://make.wordpress.org/cli/handbook/pull-requests/#setting-up)" for details specific to working on this package locally.
 

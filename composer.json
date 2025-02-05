@@ -1,8 +1,8 @@
 {
-	"name": "trepmal/wp-revisions-cli",
+	"name": "yannicklin-ctm/wp-revisions-cli",
 	"description": "Manage revisions",
 	"type": "wp-cli-package",
-	"homepage": "https://github.com/trepmal/wp-revisions-cli",
+	"homepage": "https://github.com/yannicklin-ctm/wp-revisions-cli",
 	"license": "MIT",
 	"require": {
 		"ext-json": "*",

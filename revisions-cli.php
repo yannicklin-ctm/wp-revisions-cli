@@ -1,17 +1,16 @@
 <?php
 /**
  * Plugin Name: Revisions CLI
- * Plugin URI: https://github.com/trepmal/wp-revisions-cli/
+ * Plugin URI: https://github.com/yannicklin-ctm/wp-revisions-cli/
  * Description: Plugin wrapper for WP CLI command, WP Revisions CLI
- * Version: 0.1.0
- * Author: Kailey Lampert
- * Author URI: kaileylampert.com
+ * Version: 0.1.1
+ * Author: Yannick Lin
  * License: MIT
  * TextDomain:
  * DomainPath:
  * Network:
  *
- * @package trepmal/wp-revisions-cli
+ * @package yannicklin-ctm/wp-revisions-cli
  */
 
 if ( ! defined( 'WP_CLI' ) ) return;
