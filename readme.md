@@ -85,17 +85,17 @@ wp revisions clean [<keep>] [--post_type=<post-type>] [--after-date=<yyyy-mm-dd>
 	[--post_type=<post-type>]
 		Clean revisions for given post type(s). Default: any
 
-	[--post-after-date=<yyyy-mm-dd>]
+	[--after-date=<yyyy-mm-dd>]
 		Clean revisions on **posts published on or after** this date. Default: none.
 
-	[--post-before-date=<yyyy-mm-dd>]
+	[--before-date=<yyyy-mm-dd>]
 		Clean revisions on **posts published on or before** this date. Default: none.
 
 	[--post_id=<post-id>]
 		Clean revisions for given post.
 
-	[--revision-after-date=<yyyy-mm-dd>]
-		Clean revisions on **revision generated on or after** this date. Default: none.
+	[--all-revisions]
+		Force to clean revisions directly, not checking any post_id, post_types. Also this would amend the date conditions, forcing to check on the revision generation timestamp in stead.
 
 	[--revision-before-date=<yyyy-mm-dd>]
 		Clean revisions on **revision generated on or before** this date. Default: none.
@@ -112,7 +112,8 @@ wp revisions clean [<keep>] [--post_type=<post-type>] [--after-date=<yyyy-mm-dd>
     wp revisions clean 5
     wp revisions clean --post_id=2
     wp revisions clean 5 --post_type=post,page
-    wp revisions clean --post-after-date=2015-11-01 --post-before-date=2015-12-30
+    wp revisions clean --after-date=2015-11-01 --before-date=2015-12-30
+	wp revisions clean --all-revisions --after-date=2015-11-01 --before-date=2015-12-30
     wp revisions clean --revision-after-date=2015-11-01 --revision-before-date=2015-12-30 --dry-run
 
 
@@ -149,7 +150,7 @@ wp revisions generate [<count>] [--post_type=<post-type>] [--post_id=<post-id>]
 Get revision status
 
 ~~~
-wp revisions status 
+wp revisions status
 ~~~
 
 **OPTIONS**
