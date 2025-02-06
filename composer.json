@@ -6,11 +6,11 @@
 	"license": "MIT",
 	"require": {
 		"ext-json": "*",
-		"wp-cli/wp-cli": "^2.1"
+		"wp-cli/wp-cli": "^2.11"
 	},
 	"config": {
 		"platform": {
-			"php": "5.4"
+			"php": "7.4"
 		},
 		"process-timeout": 7200,
 		"sort-packages": true
@@ -32,7 +32,7 @@
 		"files": [ "revisions-cli.php" ]
 	},
 	"require-dev": {
-		"wp-cli/wp-cli-tests": "^2.0.7"
+		"wp-cli/wp-cli-tests": "^4.3.5"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,
