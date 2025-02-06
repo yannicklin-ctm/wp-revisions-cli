@@ -117,7 +117,7 @@ wp revisions clean [<keep>] [--post_type=<post-type>] [--after-date=<yyyy-mm-dd>
     wp revisions clean 5 --post_type=post,page
     wp revisions clean --after-date=2015-11-01 --before-date=2015-12-30
 	wp revisions clean --all-revisions --after-date=2015-11-01 --before-date=2015-12-30
-    wp revisions clean --revision-after-date=2015-11-01 --revision-before-date=2015-12-30 --dry-run
+    wp revisions clean --after-date=2015-11-01 --before-date=2015-12-30 --dry-run
 
 
 
