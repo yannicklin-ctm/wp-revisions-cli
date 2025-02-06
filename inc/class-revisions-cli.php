@@ -220,20 +220,17 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 	 * [--post_type=<post-type>]
 	 * : Clean revisions for given post type(s). Default: any
 	 *
-	 * [--post-after-date=<yyyy-mm-dd>]
+	 * [--after-date=<yyyy-mm-dd>]
 	 * : Clean revisions on posts published on or after this date. Default: none.
 	 *
-	 * [--post-before-date=<yyyy-mm-dd>]
+	 * [--before-date=<yyyy-mm-dd>]
 	 * : Clean revisions on posts published on or before this date. Default: none.
-	 *
-	 * [--revision-after-date=<yyyy-mm-dd>]
-	 * : Clean revisions on revision generated on or after this date. Default: none.
-	 *
-	 * [--revision-before-date=<yyyy-mm-dd>]
-	 * : Clean revisions on revision generated on or before this date. Default: none.
 	 *
 	 * [--post_id=<post-id>]
 	 * : Clean revisions for given post.
+	 *
+	 * [--all-revisions]
+	 * : Force to clean revisions directly, not checking any post_id, post_types. Also this would amend the date conditions, forcing to check on the revision generation timestamp in stead.
 	 *
 	 * [--hard]
 	 * : Hard delete. Slower, uses wp_delete_post_revision().
@@ -345,10 +342,10 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 				$where = sprintf( 'AND post_type IN ( %s )', implode( ',', $post_types ) );
 
 				// verify post dates
-				if ( isset( $assoc_args['post-after-date'] ) || isset( $assoc_args['post-before-date'] ) ) {
+				if ( isset( $assoc_args['after-date'] ) || isset( $assoc_args['before-date'] ) ) {
 
-					$strto_aft = isset( $assoc_args['post-after-date'] ) ? strtotime( $assoc_args['post-after-date'] ) : false;
-					$strto_bef = isset( $assoc_args['post-before-date'] ) ? strtotime( $assoc_args['post-before-date'] ) : false;
+					$strto_aft = isset( $assoc_args['after-date'] ) ? strtotime( $assoc_args['after-date'] ) : false;
+					$strto_bef = isset( $assoc_args['before-date'] ) ? strtotime( $assoc_args['before-date'] ) : false;
 
 					$aft_date = $strto_aft ? date( 'Y-m-d', $strto_aft ) : false;
 					$bef_date = $strto_bef ? date( 'Y-m-d', $strto_bef ) : false;
@@ -362,16 +359,16 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 					}
 
 					if (
-						( isset( $assoc_args['post-after-date'] ) && ! $aft_date ) ||
-						( isset( $assoc_args['post-before-date'] ) && ! $bef_date )
+						( isset( $assoc_args['after-date'] ) && ! $aft_date ) ||
+						( isset( $assoc_args['before-date'] ) && ! $bef_date )
 					) {
 						WP_CLI::log( 'Invalid date provided' );
 						WP_CLI::log( 'Date: Given -> Computed' );
-						if ( isset( $assoc_args['post-after-date'] ) ) {
-							WP_CLI::log( sprintf( 'After: %s -> %s', $assoc_args['post-after-date'], $aft_date ?: 'none' ) );
+						if ( isset( $assoc_args['after-date'] ) ) {
+							WP_CLI::log( sprintf( 'After: %s -> %s', $assoc_args['after-date'], $aft_date ?: 'none' ) );
 						}
-						if ( isset( $assoc_args['post-before-date'] ) ) {
-							WP_CLI::log( sprintf( 'Before: %s -> %s', $assoc_args['post-before-date'], $bef_date ?: 'none' ) );
+						if ( isset( $assoc_args['before-date'] ) ) {
+							WP_CLI::log( sprintf( 'Before: %s -> %s', $assoc_args['before-date'], $bef_date ?: 'none' ) );
 						}
 						WP_CLI::confirm( 'Proceed?' , $assoc_args );
 					}
