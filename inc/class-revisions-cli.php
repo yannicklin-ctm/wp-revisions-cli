@@ -241,6 +241,9 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 	 * [--dry-run]
 	 * : Dry run, just a test, no actual cleaning done.
 	 *
+	 * [--yes]
+	 * : Answer yes to the confirmation message.
+	 *
 	 * ## EXAMPLES
 	 *
 	 *     wp revisions clean
@@ -288,7 +291,7 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 					if ( isset( $assoc_args['before-date'] ) ) {
 						WP_CLI::log( sprintf( 'Before: %s -> %s', $assoc_args['before-date'], $bef_date_revisions ?: 'none' ) );
 					}
-					WP_CLI::confirm( '(For ALL Revisions) Proceed?' );
+					WP_CLI::confirm( '(For ALL Revisions) Proceed?' , $assoc_args );
 				}
 			}
 
@@ -370,7 +373,7 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 						if ( isset( $assoc_args['post-before-date'] ) ) {
 							WP_CLI::log( sprintf( 'Before: %s -> %s', $assoc_args['post-before-date'], $bef_date ?: 'none' ) );
 						}
-						WP_CLI::confirm( 'Proceed?' );
+						WP_CLI::confirm( 'Proceed?' , $assoc_args );
 					}
 				}
 

@@ -74,7 +74,7 @@ wp revisions dump [--hard] [--yes]
 Delete old revisions
 
 ~~~
-wp revisions clean [<keep>] [--post_type=<post-type>] [--after-date=<yyyy-mm-dd>] [--before-date=<yyyy-mm-dd>] [--post_id=<post-id>] [--hard] [--dry-run]
+wp revisions clean [<keep>] [--post_type=<post-type>] [--after-date=<yyyy-mm-dd>] [--before-date=<yyyy-mm-dd>] [--post_id=<post-id>] [--all-revisions] [--hard] [--dry-run] [--yes]
 ~~~
 
 **OPTIONS**
@@ -105,6 +105,9 @@ wp revisions clean [<keep>] [--post_type=<post-type>] [--after-date=<yyyy-mm-dd>
 
 	[--dry-run]
 		Dry run, just a test, no actual cleaning done.
+
+	[--yes]
+		Answer yes to the confirmation message.
 
 **EXAMPLES**
 
