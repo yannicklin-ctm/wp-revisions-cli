@@ -568,14 +568,14 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 
 		if ( !isset( $assoc_args['confirmed']) || empty($table) ) {
 
-			WP_CLI::success( 'Dry-Run: Clean the table, %s', $table );
+			WP_CLI::success( sprintf( 'Dry-Run: Clean the table, %s', $table ) );
 
 		} else {
 			$full_table_name = $wpdb->prefix . $table;
 
 			$wpdb->query( "DROP TABLE IF EXISTS {$full_table_name}" );
 
-			WP_CLI::success( 'Dropped the table::%s as requested.', $table );
+			WP_CLI::success( sprintf( 'Dropped the table::%s as requested.', $table ) );
 
 		}
 	}
