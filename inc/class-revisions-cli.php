@@ -301,12 +301,12 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 
 			$this->start_bulk_operation();
 
-			if ( !$dry_run ) {
+			if ( !($dry_run || $total_revisions) ) {
 
 				if ( isset( $assoc_args['hard'] ) ) {
 					foreach ( $revisions as $post_id ) {
 						$total_revisions_deleted ++;
-						wp_delete_post_revision( $id );
+						wp_delete_post_revision( $post_id );
 					}
 				} else {
 					$delete_revision_ids = implode( ',', $revisions );
@@ -319,7 +319,7 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 				WP_CLI::success( sprintf( 'Finished removing %d old revisions.', $total_revisions_deleted ) );
 
 			} else {
-				WP_CLI::success( sprintf( 'Dry Run: Will remove %d old revisions.', $total_revisions ) );
+				WP_CLI::success( sprintf( 'Dry Run only: Will remove %d old revisions; the where condition is ', $total_revisions, $where ) );
 			}
 
 		} else {
