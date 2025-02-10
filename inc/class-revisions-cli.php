@@ -301,7 +301,7 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 
 			$this->start_bulk_operation();
 
-			if ( $dry_run ) {
+			if ( !$dry_run ) {
 
 				if ( isset( $assoc_args['hard'] ) ) {
 					foreach ( $revisions as $post_id ) {
@@ -463,6 +463,9 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 			} else {
 				WP_CLI::success( sprintf( 'Finished removing %d old revisions.', $total_deleted ) );
 			}
+
+
+ Success: Dry Run: Will remove 0 old revisions.
 
 		}
 	}
