@@ -319,7 +319,7 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 				WP_CLI::success( sprintf( 'Finished removing %d old revisions.', $total_revisions_deleted ) );
 
 			} else {
-				WP_CLI::success( sprintf( 'Dry Run: Will remove %d old revisions.', $total_revisions_deleted ) );
+				WP_CLI::success( sprintf( 'Dry Run: Will remove %d old revisions.', $total_revisions ) );
 			}
 
 		} else {
