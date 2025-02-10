@@ -564,8 +564,9 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 	public function table_remove( $args = array(), $assoc_args = array() ) {
 
 		global $wpdb;
+		$table = isset($assoc_args['table_name']) ? $assoc_args['table_name']: '';
 
-		if ( !isset( $assoc_args['confirmed']) || empty( ($table = $assoc_args['table_name'])) ) {
+		if ( !isset( $assoc_args['confirmed']) || empty($table) ) {
 
 			WP_CLI::success( 'Dry-Run: Clean the table, %s', $table );
 
