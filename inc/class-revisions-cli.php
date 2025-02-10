@@ -311,6 +311,7 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 				} else {
 					$delete_revision_ids = implode( ',', $revisions );
 					$wpdb->query( "DELETE FROM $wpdb->posts WHERE ID IN ($delete_revision_ids)" );
+					$wpdb->query( "DELETE FROM $wpdb->postmeta WHERE post_id IN ($delete_revision_ids)" );
 				}
 
 				$wpdb->flush();
@@ -543,6 +544,41 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 		WP_CLI::success( 'Finished generating revisions.' );
 
 	}
+
+
+	/**
+	 * Extra Powerful Tools, to get rid of certain table
+	 *
+	 * ## OPTIONS
+	 *
+	 * [--table_name=<table_name>]
+	 * : Remove the specific table without the table-prefix
+	 *
+	 * [--confirmed]
+	 * : Only execute with this parameter is set; or return Dry-Run output
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp revisions table_remove --table_name=xxxxx --confirmed
+	 */
+	public function table_remove( $args = array(), $assoc_args = array() ) {
+
+		global $wpdb;
+
+		if ( !isset( $assoc_args['confirmed']) || empty( ($table = $assoc_args['table_name'])) ) {
+
+			WP_CLI::success( 'Dry-Run: Clean the table, %s', $table );
+
+		} else {
+			$full_table_name = $wpdb->prefix . $table;
+
+			$wpdb->query( "DROP TABLE IF EXISTS {$full_table_name}" );
+
+			WP_CLI::success( 'Dropped the table::%s as requested.', $table );
+
+		}
+	}
+
 
 	/**
 	 * Supports Revisions

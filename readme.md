@@ -162,6 +162,30 @@ wp revisions status
 
     wp revisions status
 
+
+
+### wp revisions table_remove
+
+Run the powerful table removal
+
+~~~
+wp revisions table_remove
+~~~
+
+**OPTIONS**
+
+	[--confirmed]
+		Only execute with this parameter is set; or return Dry-Run output
+
+	[--table_name=<table_name>]
+		Remove the specific table without the table-prefix
+
+**EXAMPLES**
+
+    wp revisions table_remove --table_name=comments
+
+
+
 ## Installing
 
 Installing this package requires WP-CLI v2.1 or greater. Update to the latest stable release with `wp cli update`.
