@@ -254,7 +254,7 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 	public function clean( $args = array(), $assoc_args = array() ) {
 
 		global $wpdb;
-		$dry_run = \WP_CLI\Utils\get_flag_value( $assoc_args, 'dry-run', false );
+		$dry_run = isset( $assoc_args['dry-run']) ? true : false;
 
 		if (isset( $assoc_args['all-revisions'])) {
 
