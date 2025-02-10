@@ -301,7 +301,7 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 
 			$this->start_bulk_operation();
 
-			if ( !($dry_run || $total_revisions) ) {
+			if ( !$dry_run && $total_revisions ) {
 
 				if ( isset( $assoc_args['hard'] ) ) {
 					foreach ( $revisions as $post_id ) {
