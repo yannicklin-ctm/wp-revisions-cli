@@ -312,6 +312,9 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 					$delete_revision_ids = implode( ',', $revisions );
 					$wpdb->query( "DELETE FROM $wpdb->posts WHERE ID IN ($delete_revision_ids)" );
 					$wpdb->query( "DELETE FROM $wpdb->postmeta WHERE post_id IN ($delete_revision_ids)" );
+					// Do the Table Optimize
+					$wpdb->query( "OPTIMIZE TABLE $wpdb->posts" );
+					$wpdb->query( "OPTIMIZE TABLE $wpdb->postmeta" );
 				}
 
 				$wpdb->flush();
@@ -446,6 +449,9 @@ class Revisions_CLI extends WP_CLI_Command { // phpcs:ignore WordPressVIPMinimum
 						$delete_ids = implode( ',', $revisions );
 						if ( ! $dry_run ) {
 							$wpdb->query( "DELETE FROM $wpdb->posts WHERE ID IN ($delete_ids)" );
+							$wpdb->query( "DELETE FROM $wpdb->postmeta WHERE post_id IN ($delete_ids)" );
+							$wpdb->query( "OPTIMIZE TABLE $wpdb->posts" );
+							$wpdb->query( "OPTIMIZE TABLE $wpdb->postmeta" );
 						}
 					}
 				}
